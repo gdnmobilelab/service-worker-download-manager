@@ -1,0 +1,12 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "module": "es6",
+        "outDir": "lib",
+        "declaration": true,
+        "strictNullChecks": true
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}

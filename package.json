@@ -1,0 +1,32 @@
+{
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "eventtarget": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.12",
+    "@types/serve-static": "^1.7.31",
+    "@types/service_worker_api": "^0.0.9",
+    "assert": "^1.4.1",
+    "expect": "^1.20.2",
+    "mocha": "^3.2.0",
+    "npm-run-all": "^4.0.2",
+    "rollup": "^0.41.6",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-builtins": "^2.1.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-typescript": "^0.8.1",
+    "rollup-watch": "^3.2.2",
+    "serve-static": "^1.12.1",
+    "ts-node": "^3.0.2",
+    "typescript": "^2.2.2"
+  },
+  "scripts": {
+    "build-test:worker": "rollup --config test/rollup.config.js test/src/worker.ts --output test/output/worker.js --watch",
+    "build-test:client": "rollup --config test/rollup.config.js test/src/client.ts --output test/output/client.js --watch",
+    "build-test:server": "node test/test-server.js",
+    "build-test": "npm-run-all --parallel build-test:*"
+  }
+}
