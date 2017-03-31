@@ -40,15 +40,15 @@ export class ServiceWorkerDownload {
                 this.emitEvent({
                     absoluteURL: this.url,
                     type: "complete",
-                    length: this.length,
-                    downloaded: this.length
+                    length: this.length!,
+                    downloaded: this.length!
                 })
             })
     }
 
     private reportProgressFromResponse(resp: Response) {
         // we make a clone so we don't lock the body
-        let rdr = resp.clone().body.getReader();
+        let rdr = resp.clone().body!.getReader();
 
         let currentLength = 0;
 
@@ -110,7 +110,7 @@ export class ServiceWorkerDownload {
             console.warn("Response did not return a content-length header");
         }
 
-        this.length = parseInt(lengthHeader);
+        this.length = parseInt(lengthHeader!);
 
         this.emitEvent({
             absoluteURL: this.url,
@@ -119,12 +119,6 @@ export class ServiceWorkerDownload {
             downloaded: 0
         });
 
-        // t: DownloadEvent = {
-        //     URL: this.url,
-        //     wnloadEventType.totalLengthFound
-
-
-        // ommunicationPort.postMessage(
     }
 
 }

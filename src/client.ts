@@ -44,7 +44,7 @@ export class DownloadRequest {
         let ev = e.data as DownloadEvent;
 
         let req = this.requests.find((r) => r.absoluteURL === ev.absoluteURL);
-        req.dispatchEvent(ev);
+        req!.dispatchEvent(ev);
     }
 
     get complete() {

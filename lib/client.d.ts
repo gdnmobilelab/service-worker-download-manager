@@ -6,6 +6,6 @@ export declare class DownloadRequest {
     constructor(cacheName: string, files: string[]);
     private sendDownloadRequest(controller);
     private receiveEvent(e);
-    readonly complete: any;
-    readonly length: any;
+    readonly complete: Promise<Download[]>;
+    readonly length: Promise<number[]>;
 }

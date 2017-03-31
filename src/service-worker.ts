@@ -13,7 +13,7 @@ export class DownloadManager {
 
     match(request: Request) {
         let match = Array.from(this.pendingDownloads).find((d) => d.url === request.url);
-        return Promise.resolve(match ? match.responseForMatchQuery.clone() : null);
+        return Promise.resolve(match && match.responseForMatchQuery ? match!.responseForMatchQuery!.clone() : null);
     }
 
     checkForDownloadRequest(e: MessageEvent) {
@@ -53,7 +53,7 @@ export class DownloadManager {
                     .then(() => {
                         let gotoNextDownload = (idx) => {
                             if (!toDownloads[idx]) {
-                                return true;
+                                return;
                             }
                             return toDownloads[idx].start()
                                 .then(() => {
